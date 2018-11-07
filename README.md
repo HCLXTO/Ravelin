@@ -1,4 +1,4 @@
-# Ravelin
+# Ravelin challenge
 Tech challenge for Henrique Calixto Go+Javascript
 
 ## Building and running the server:
@@ -9,7 +9,7 @@ Tech challenge for Henrique Calixto Go+Javascript
   not, please remember to alter the path on line 8 of the 
   '/server/server.go' file to reflect your current folder structure 
 
- - Open the command line on this folder and run:
+ - On the Ravelin folder, open the command line and run:
 
    ```go install monitor/monitor.go```
 
