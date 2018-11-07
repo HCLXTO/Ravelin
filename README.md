@@ -12,8 +12,11 @@ Tech challenge for Henrique Calixto Go+Javascript
  - Open the command line on this folder and run:
 
    ```go install monitor/monitor.go```
+
    ```cd server```
+   
    ```go build server.go```
+   
    ```./server```
 
    The server will be running on http://localhost:8080/
