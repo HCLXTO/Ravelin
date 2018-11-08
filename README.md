@@ -32,6 +32,7 @@ Tech challenge for Henrique Calixto: Go+Javascript
 
  - On the monitor folder we have:
     - monitor.go - a package that register and report the monitored events
+    - monitor_test.go - unit tests for the monitor package
 
 ## Coments:
  - On the front end we have the monitor.js file that capture and send to the server the following events:
@@ -48,3 +49,5 @@ Tech challenge for Henrique Calixto: Go+Javascript
    On the monitor.go file I have a function "finalizeSession" that is called when the form is submited, on a real context this function would report the Data to another part of the system, but in the context of this tech challenge I'm only deleting the Data from the map
 
    For the hash function I implemented the djb2 hashing algorithm source: http://www.cse.yorku.ca/~oz/hash.html, and I'm using it in the Data's Print function.
+
+

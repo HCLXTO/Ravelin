@@ -7,13 +7,7 @@ import (
    "encoding/json"
    "github.com/HCLXTO/Ravelin/monitor"
 )
-/*
-// Basic response struct
-type Response struct {
-   Status  string
-   Obs string
-}
-*/
+
 // Handler for the monitoring events
 func monitorHandler(w http.ResponseWriter, r *http.Request) {
    if r.Method == "POST"{
@@ -30,7 +24,7 @@ func monitorHandler(w http.ResponseWriter, r *http.Request) {
          return
       }
       
-      response, err := event.Process() //Response {Status: "OK", Obs: event.EventType}
+      response, err := event.Process()
       if err != nil {
          fmt.Println(err.Error())
          http.Error(w, err.Error(), 422)
@@ -38,14 +32,13 @@ func monitorHandler(w http.ResponseWriter, r *http.Request) {
       }
 
       response.Data.Print()
-
       json.NewEncoder(w).Encode(response.Status)
-
    } else{
       http.Error(w, "Wrong request method.", 400)
       return
    }
 }
+
 func main() {
    //Monitoring event handlers
    http.HandleFunc("/screenResize", monitorHandler)

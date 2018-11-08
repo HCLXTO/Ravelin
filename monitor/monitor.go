@@ -1,3 +1,8 @@
+// Keep track of multiple sessions' monitored events, it has 
+// 3 exported functions:
+//    - NewEvent() - Returns a default event struct
+//    - event.Process() - Process a event and return the correspondin Data
+//    - data.Print() - Print the values from the Data struct
 package monitor
 
 import (
@@ -256,5 +261,3 @@ func (e* event) copyAndPasteValidation() (error){
   }
   return nil
 }
-
-
