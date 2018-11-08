@@ -32,6 +32,7 @@ const registerFirstPress = do_once(function(){
 // Sends the timeTaken event to the server
 const pressSubmit = do_once(function(e){
    e.preventDefault()
+   let form = this
    let secs = 0
    if (FIRST_PRESS) {
       let submit_time = new Date()
@@ -44,7 +45,8 @@ const pressSubmit = do_once(function(e){
 
    postData("/timeTaken", event)
    .then(function(data){
-      console.log(JSON.stringify(data))
+      //console.log(JSON.stringify(data))
+      form.submit()
    })
    .catch(error => console.error(error))
 })

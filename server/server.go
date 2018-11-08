@@ -7,21 +7,21 @@ import (
    "encoding/json"
    "github.com/HCLXTO/Ravelin/monitor"
 )
-
+/*
 // Basic response struct
 type Response struct {
    Status  string
    Obs string
 }
-
+*/
 // Handler for the monitoring events
 func monitorHandler(w http.ResponseWriter, r *http.Request) {
-   fmt.Println("Recebi uma monitor request")
    if r.Method == "POST"{
       if r.Body == nil{
          http.Error(w, "Request without a body.", 400)
          return
       }
+
       event := monitor.NewEvent()
       decoder := json.NewDecoder(r.Body)
       err := decoder.Decode(&event)
@@ -29,17 +29,17 @@ func monitorHandler(w http.ResponseWriter, r *http.Request) {
          http.Error(w, err.Error(), 400)
          return
       }
-      fmt.Println(event.EventType)
-      fmt.Println(event.WebsiteUrl)
-      fmt.Println(event.SessionId)
-      fmt.Println(event.ResizeFrom)
-      fmt.Println(event.ResizeTo)
-      fmt.Println(event.Time)
-      fmt.Println(event.Pasted)
-      fmt.Println(event.FormId)
       
-      response := Response {Status: "OK", Obs: event.EventType}
-      json.NewEncoder(w).Encode(response)
+      response, err := event.Process() //Response {Status: "OK", Obs: event.EventType}
+      if err != nil {
+         fmt.Println(err.Error())
+         http.Error(w, err.Error(), 422)
+         return
+      }
+
+      response.Data.Print()
+
+      json.NewEncoder(w).Encode(response.Status)
 
    } else{
       http.Error(w, "Wrong request method.", 400)
