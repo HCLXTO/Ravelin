@@ -1,5 +1,5 @@
 // Keep track of multiple sessions' monitored events, it has 
-// 3 exported functions:
+// the following exported functions:
 //    - NewEvent() - Returns a default event struct
 //    - event.Process() - Process a event and return the correspondin Data
 //    - data.Print() - Print the values from the Data struct
