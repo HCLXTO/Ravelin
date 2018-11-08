@@ -46,3 +46,5 @@ Tech challenge for Henrique Calixto: Go+Javascript
    To store the events I created a map, that used the session id as the key, to store the Data structs in memory, on a bigger scale it would be advisable to use a database for this task, but I judged that it would be outside the scope of this tech challenge.
 
    On the monitor.go file I have a function "finalizeSession" that is called when the form is submited, on a real context this function would report the Data to another part of the system, but in the context of this tech challenge I'm only deleting the Data from the map
+
+   For the hash function I implemented the djb2 hashing algorithm source: http://www.cse.yorku.ca/~oz/hash.html, and I'm using it in the Data's Print function.

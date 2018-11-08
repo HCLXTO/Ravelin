@@ -69,6 +69,19 @@ func newResponse(status bool, data Data) resp {
   return resp{status, data}
 }
 
+/* HASH FUNCTION */
+
+// Implementation of the djb2 hash http://www.cse.yorku.ca/~oz/hash.html
+func hash(s string) uint64{
+  var hash uint64
+  hash = 5381//18446744073709551614
+  
+  for _, c := range(s){
+    hash = ((hash << 5) + hash) + uint64(c)
+  }
+  return hash
+}
+
 /* STORE FUNCTIONS */
 
 // Returns the Data stored based on the event's SessionId
@@ -112,6 +125,7 @@ func finalizeSession(d Data) {
 func (d* Data) Print() {
   fmt.Println("Session Data:")
   fmt.Println("WebsiteUrl: ", d.WebsiteUrl)
+  fmt.Println("WebsiteUrl HASH: ", hash(d.WebsiteUrl))
   fmt.Println("SessionId: ", d.SessionId)
   fmt.Println("ResizeFrom: ", d.ResizeFrom)
   fmt.Println("ResizeTo: ", d.ResizeTo)
