@@ -1,4 +1,4 @@
-// Tests for the monitor package
+// Unit tests for the monitor package
 package monitor
 
 import "testing"
